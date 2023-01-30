@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Clock</title>
+    <style>
+      #clock {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        color: #000000;
+        margin: 50px auto;
+        background-color: #F5F5F5;
+        padding: 20px;
+        border-radius: 20px;
+        border: 2px solid #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+
+    <script>
+      function updateClock() {
+        var currentTime = new Date();
+        var currentHours = currentTime.getHours();
+        var currentMinutes = currentTime.getMinutes();
+        var currentSeconds = currentTime.getSeconds();
+
+        currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+        currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+
+        var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+        currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+        currentHours = (currentHours == 0) ? 12 : currentHours;
+
+        var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+        document.getElementById("clock").innerHTML = currentTimeString;
+      }
+
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
